@@ -23,11 +23,11 @@ public class SideScrollingWorld extends World
     //              Should be a resolution that's a multiple of TILE_SIZE
     private static final int VISIBLE_WIDTH = 640;
     private static final int VISIBLE_HEIGHT = 480;
-    
+
     // Additional useful constants based on world size
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
     private static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
-    
+
     // Defining the boundaries of the scrollable world
     // TO STUDENTS: Modify SCROLLABLE_WIDTH if you wish to have a longer level
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 3;
@@ -62,12 +62,171 @@ public class SideScrollingWorld extends World
     private void setup()
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
-        addLeftGround();
-        addFences();
-        addMetalPlateSteps();
-        addClouds();
-        addRightGround();
+        // addLeftGround();
+        // addFences();
+        // addMetalPlateSteps();
+        // addClouds();
+        // addRightGround();
+
+        addGround();
+        addHills();
+        addWeapons();
+        addPlane();
         addHero();
+    }
+
+    /**
+     * Add plane that would attack.
+     */
+    private void addPlane()
+    {
+        int x = 15 * TILE_SIZE + HALF_TILE_SIZE;
+        int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
+        Cloud Plane = new Cloud(x, y);
+        addObject(Plane, x, y);
+    }
+
+    /**
+     * Add blocks to create the ground to walk on.
+     */
+    private void addGround()
+    {
+        // add gound below
+        for (int i = 0; i <= 20; i += 1)
+        {
+            // location
+            int x = i * TILE_SIZE;
+            int y = 13 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // create and add to world
+            GroundBelow Below = new GroundBelow(x, y);
+            addObject(Below, x, y);
+        }
+        for (int i = 0; i <= 20; i += 1)
+        {
+            // location
+            int x = i * TILE_SIZE;
+            int y = 14 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // create and add to world
+            GroundBelow Below = new GroundBelow(x, y);
+            addObject(Below, x, y);
+        }
+
+        // add ground
+        for (int i = 0; i <= 20; i += 1)
+        {
+            // location
+            int x = i * TILE_SIZE;
+            int y = 12 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // create and add to world
+            Ground someGround = new Ground(x, y);
+            addObject(someGround, x, y);
+        }
+    }
+
+    /**
+     * Add weapons that would attack the hero.
+     */
+    private void addWeapons()
+    {
+        int x = 11 * TILE_SIZE + HALF_TILE_SIZE;
+        int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
+        MetalPlate Weapon = new MetalPlate(x, y);
+        addObject(Weapon, x, y);
+    }
+
+    /**
+     * Add hills that can be destroied
+     */
+    private void addHills()
+    {
+        // first
+        for (int i = 0; i <= 4; i += 1)
+        {
+            //location
+            int x = TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+            int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // create and add to world
+            Fence someFence = new Fence(x, y);
+            addObject(someFence, x, y);
+        }
+        for (int i = 0; i <= 2; i += 1)
+        {
+            //location
+            int x = 2 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+            int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // create and add to world
+            Fence someFence = new Fence(x, y);
+            addObject(someFence, x, y);
+        }
+        for (int i = 0; i <= 3; i += 1)
+        {
+            //location
+            int x = 2 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+            int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // create and add to world
+            Fence someFence = new Fence(x, y);
+            addObject(someFence, x, y);
+        }
+
+        // second
+        for (int i = 0; i <= 3; i += 1)
+        {
+            //location
+            int x = 10 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+            int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // create and add to world
+            Fence someFence = new Fence(x, y);
+            addObject(someFence, x, y);
+        }
+        for (int i = 0; i <= 1; i += 1)
+        {
+            //location
+            int x = 11 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+            int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // create and add to world
+            Fence someFence = new Fence(x, y);
+            addObject(someFence, x, y);
+        }
+
+        // third
+        for (int i = 0; i <= 2; i += 1)
+        {
+            //location
+            int x = 18 * TILE_SIZE +  i * TILE_SIZE;
+            int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // create and add to world
+            Fence someFence = new Fence(x, y);
+            addObject(someFence, x, y);
+        }
+        for (int i = 0; i <= 2; i += 1)
+        {
+            //location
+            int x = 18 * TILE_SIZE +  i * TILE_SIZE;
+            int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // create and add to world
+            Fence someFence = new Fence(x, y);
+            addObject(someFence, x, y);
+        }
+        for (int i = 0; i <= 1; i += 1)
+        {
+            //location
+            int x = 18 * TILE_SIZE +  i * TILE_SIZE;
+            int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // create and add to world
+            Fence someFence = new Fence(x, y);
+            addObject(someFence, x, y);
+        }
     }
 
     /**
@@ -186,7 +345,7 @@ public class SideScrollingWorld extends World
         theHero = new Hero(initialX);
 
         // Add hero in bottom left corner of screen
-        addObject(theHero, initialX, getHeight() / 4 * 3);
+        addObject(theHero, initialX, 2 * TILE_SIZE);
     }
 
     /**
