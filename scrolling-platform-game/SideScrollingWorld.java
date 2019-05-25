@@ -39,6 +39,8 @@ public class SideScrollingWorld extends World
     // Track whether game is on
     private boolean isGameOver;
 
+    // for health level
+    public int healthLevel = 10;
 
     /**
      * Constructor for objects of class SideScrollingWorld.
@@ -67,6 +69,20 @@ public class SideScrollingWorld extends World
         addWeapons();
         addPlane();
         addHero();
+        showScore();
+    }
+
+    // show health level
+    public void showScore()
+    {
+        showText("Health Level: " + healthLevel, VISIBLE_WIDTH / 5, VISIBLE_HEIGHT / 6);
+    }
+
+    // Change health Level
+    public void changeScoreBy(int thisMuch)
+    {
+        healthLevel += thisMuch;
+        showScore();
     }
 
     /**
@@ -125,10 +141,34 @@ public class SideScrollingWorld extends World
      */
     private void addWeapons()
     {
-        int x = 11 * TILE_SIZE + HALF_TILE_SIZE;
-        int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
-        Weapon Weapon = new Weapon(x, y);
-        addObject(Weapon, x, y);
+        for (int i = 0; i <= 0; i += 1)
+        {
+            int x = 11 * TILE_SIZE + HALF_TILE_SIZE;
+            int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
+            Weapon Weapon = new Weapon(x, y);
+            addObject(Weapon, x, y);
+        }
+        for (int i = 0; i <= 0; i += 1)
+        {
+            int x = 18 * TILE_SIZE + HALF_TILE_SIZE;
+            int y = 8 * TILE_SIZE + HALF_TILE_SIZE;
+            Weapon Weapon = new Weapon(x, y);
+            addObject(Weapon, x, y);
+        }
+        for (int i = 0; i <= 0; i += 1)
+        {
+            int x = 33 * TILE_SIZE + HALF_TILE_SIZE;
+            int y = 8 * TILE_SIZE + HALF_TILE_SIZE;
+            Weapon Weapon = new Weapon(x, y);
+            addObject(Weapon, x, y);
+        }
+        for (int i = 0; i <= 0; i += 1)
+        {
+            int x = 40 * TILE_SIZE + HALF_TILE_SIZE;
+            int y = 8 * TILE_SIZE + HALF_TILE_SIZE;
+            Weapon Weapon = new Weapon(x, y);
+            addObject(Weapon, x, y);
+        }
     }
 
     /**
@@ -136,9 +176,9 @@ public class SideScrollingWorld extends World
      */
     private void addHills()
     {
-        
+
         // second
-        for (int i = 0; i <= 0; i += 1)
+        for (int i = 0; i <= 2; i += 1)
         {
             //location
             int x = 10 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
@@ -148,7 +188,7 @@ public class SideScrollingWorld extends World
             MetalPlate Hill = new MetalPlate(x, y);
             addObject(Hill, x, y);
         }
-        for (int i = 0; i <= 0; i += 1)
+        for (int i = 0; i <= 1; i += 1)
         {
             //location
             int x = 11 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
@@ -156,17 +196,6 @@ public class SideScrollingWorld extends World
 
             // create and add to world
             MetalPlate Hill = new MetalPlate(x, y);
-            addObject(Hill, x, y);
-        }
-        
-        for (int i = 0; i <= 2; i += 1)
-        {
-            //location
-            int x = 11 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
-
-            // create and add to world
-            Ground Hill = new Ground(x, y);
             addObject(Hill, x, y);
         }
 

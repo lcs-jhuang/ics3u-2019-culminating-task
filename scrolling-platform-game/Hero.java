@@ -49,6 +49,7 @@ public class Hero extends Actor
     private static final int COUNT_OF_WALKING_IMAGES = 2;
     private int walkingFrames;
 
+    // for firing
     private int gunReloadTime;              
     private int reloadDelayCount;  
 
@@ -168,7 +169,6 @@ public class Hero extends Actor
             // Stop falling
             deltaY = 0;
 
-            
             // Get a reference to any object that's created from a subclass of Platform,
             // that is below (or just below in front, or just below behind) the hero
             Actor directlyUnder = getOneObjectAtOffset(0, getImage().getHeight() / 2, Platform.class);
@@ -226,8 +226,6 @@ public class Hero extends Actor
             // Stop moving
             deltaX = 0;
 
-            
-
             // Get a reference to any object that's created from a subclass of Platform,
             // that is below (or just below in front, or just below behind) the hero
             Actor upperInFront = getOneObjectAtOffset(0, getImage().getHeight() / 3, MetalPlate.class);
@@ -253,7 +251,7 @@ public class Hero extends Actor
         }
         else
         {
-            fall();
+            animateWalk(horizontalDirection);
         }
 
     }
@@ -430,15 +428,14 @@ public class Hero extends Actor
 
             // Get a list of all decorations (objects that need to move
             // to make hero look like they are moving)
-            List<Decoration> decorations = world.getObjects(Decoration.class);
+            List<Other> decorations = world.getObjects(Other.class);
 
             // Move all the decoration objects to make it look like hero is moving
-            for (Decoration decoration: decorations)
+            for (Other Other: decorations)
             {
                 // Platforms move left to make hero appear to move right
-                decoration.moveLeft(deltaX);
+                Other.moveLeft(deltaX);
             }
-
             // Get a list of all farAwayItems (objects that need to move
             // to make hero look like they are moving)
             List<FarAwayItem> farAwayItems = world.getObjects(FarAwayItem.class);
@@ -522,10 +519,10 @@ public class Hero extends Actor
 
             // Get a list of all decorations (objects that need to move
             // to make hero look like they are moving)
-            List<Decoration> decorations = world.getObjects(Decoration.class);
+            List<Other> decorations = world.getObjects(Other.class);
 
             // Move all the decoration objects to make it look like hero is moving
-            for (Decoration decoration: decorations)
+            for (Other decoration: decorations)
             {
                 // Platforms move right to make hero appear to move left
                 decoration.moveRight(deltaX);

@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=EnemyFire
+comment0.text=\n\ Write\ a\ description\ of\ class\ enemyFire\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=EnemyFire()
+comment1.text=\n\ Constructor\n\ \n\ Runs\ once\ when\ object\ created\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\n\ Act\ -\ do\ whatever\ the\ Bullet\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment3.params=
+comment3.target=void\ checkBoundaries()
+comment4.params=
+comment4.target=void\ checkCollision()
+numComments=5

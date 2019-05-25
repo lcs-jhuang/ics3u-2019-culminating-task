@@ -6,14 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Decoration extends Tile
+public class Other extends Tile
 {
     /**
      * Constructor
      * 
      * Called once when object is created.
      */
-    Decoration(int scrollableWorldX, int scrollableWorldY)
+    Other(int scrollableWorldX, int scrollableWorldY)
     {
         super(scrollableWorldX, scrollableWorldY);
     }

@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Defend here.
+ * Write a description of class enemyFire here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Defend extends Actor
+public class EnemyFire extends Actor
 {
     private boolean hasBeenRemoved;
 
@@ -15,7 +15,7 @@ public class Defend extends Actor
      * 
      * Runs once when object created
      */
-    Defend ()
+    EnemyFire ()
     {
         hasBeenRemoved = false;       
     }
@@ -26,7 +26,7 @@ public class Defend extends Actor
      */
     public void act() 
     {       
-        setLocation(getX()  + speed, getY());
+        setLocation(getX() - speed, getY());
         checkBoundaries();
         if (hasBeenRemoved == false)
         {
@@ -37,7 +37,7 @@ public class Defend extends Actor
     // Remove bullets if they are off screen
     public void checkBoundaries()
     { 
-        if (getX() == 20) 
+        if (getX() == 0) 
         {
             hasBeenRemoved = true;
             getWorld().removeObject(this);
@@ -45,30 +45,16 @@ public class Defend extends Actor
     }
 
     // Set the speed of the bullet 
-    private int speed = 8;
+    private int speed = 10;
 
     // Remove asteroid if touched and add points 
     public void checkCollision()
     {
-        if (hasBeenRemoved == false)
-        {
-            if (isTouching(MetalPlate.class)) 
-            {
-                removeTouching(MetalPlate.class);             
-                World world = (SideScrollingWorld) getWorld();         
-                world.removeObject(this);
-                hasBeenRemoved = true;
-            }
-        }
-        if (hasBeenRemoved == false)
-        { 
-            if (isTouching(Weapon.class)) 
-            {
-                removeTouching(Weapon.class);             
-                World world = (SideScrollingWorld) getWorld();         
-                world.removeObject(this);
-                hasBeenRemoved = true;
-            }
+        if (isTouching(Hero.class)) 
+        {                       
+            World world = (SideScrollingWorld) getWorld();         
+            world.removeObject(this);            
         }
     }
+
 }
