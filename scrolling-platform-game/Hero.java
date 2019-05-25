@@ -234,7 +234,6 @@ public class Hero extends Actor
         // Track vertical direction
         verticalDirection = JUMPING_UP;
 
-
         // Change the vertical speed to the power of the jump
         deltaY = jumpStrength;
 

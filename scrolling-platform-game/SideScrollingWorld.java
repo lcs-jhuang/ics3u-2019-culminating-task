@@ -127,7 +127,7 @@ public class SideScrollingWorld extends World
     {
         int x = 11 * TILE_SIZE + HALF_TILE_SIZE;
         int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
-        Fence Weapon = new Fence(x, y);
+        Weapon Weapon = new Weapon(x, y);
         addObject(Weapon, x, y);
     }
 
