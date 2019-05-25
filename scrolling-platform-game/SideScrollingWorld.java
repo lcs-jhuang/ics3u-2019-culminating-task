@@ -136,40 +136,9 @@ public class SideScrollingWorld extends World
      */
     private void addHills()
     {
-        // first
-        for (int i = 0; i <= 4; i += 1)
-        {
-            //location
-            int x = 2 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
-
-            // create and add to world
-            MetalPlate Hill = new MetalPlate(x, y);
-            addObject(Hill, x, y);
-        }
-        for (int i = 0; i <= 2; i += 1)
-        {
-            //location
-            int x = 4 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
-
-            // create and add to world
-            MetalPlate Hill = new MetalPlate(x, y);
-            addObject(Hill, x, y);
-        }
-        for (int i = 0; i <= 3; i += 1)
-        {
-            //location
-            int x = 4 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
-
-            // create and add to world
-            MetalPlate Hill = new MetalPlate(x, y);
-            addObject(Hill, x, y);
-        }
-
+        
         // second
-        for (int i = 0; i <= 3; i += 1)
+        for (int i = 0; i <= 0; i += 1)
         {
             //location
             int x = 10 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
@@ -179,7 +148,7 @@ public class SideScrollingWorld extends World
             MetalPlate Hill = new MetalPlate(x, y);
             addObject(Hill, x, y);
         }
-        for (int i = 0; i <= 1; i += 1)
+        for (int i = 0; i <= 0; i += 1)
         {
             //location
             int x = 11 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
@@ -187,6 +156,17 @@ public class SideScrollingWorld extends World
 
             // create and add to world
             MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
+        }
+        
+        for (int i = 0; i <= 2; i += 1)
+        {
+            //location
+            int x = 11 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+            int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // create and add to world
+            Ground Hill = new Ground(x, y);
             addObject(Hill, x, y);
         }
 

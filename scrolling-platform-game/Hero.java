@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * This is the class for the "main character" in the action.
  * 
- * @author R. Gordon
+ * @author Joe
  * @version May 8, 2019
  */
 public class Hero extends Actor
@@ -91,7 +91,7 @@ public class Hero extends Actor
         // Track animation frames for walking
         walkingFrames = 0;
 
-        gunReloadTime = 8;
+        gunReloadTime = 20;
         reloadDelayCount = 0;
     }
 
@@ -103,6 +103,7 @@ public class Hero extends Actor
     {
         checkKeys();
         checkFall();
+        checkBlock();
         if (!isGameOver)
         {
             checkGameOver();
@@ -152,7 +153,8 @@ public class Hero extends Actor
         if ((reloadDelayCount >= gunReloadTime) && horizontalDirection == FACING_RIGHT)
         {
             getWorld().addObject(new Defend(), getX(), getY());
-            reloadDelayCount = 0;               
+            reloadDelayCount = 0;    
+            setImage("GodzillaMOM_fire_0.png");            
         }
     }        
 
@@ -217,6 +219,73 @@ public class Hero extends Actor
 
         // If there is no solid object below (or slightly in front of or behind) the hero...
         if (directlyUnder == null && frontUnder == null && rearUnder == null)
+        {
+            return false;   // Not on a solid object
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public void checkBlock()
+    {
+        if (toLeftOfPlatform())
+        {
+            // Stop moving
+            deltaX = 0;
+
+            // Set image
+            if (horizontalDirection == FACING_RIGHT && Greenfoot.isKeyDown("right") == false)
+            {
+                setImage("GodzillaMOM_Right_0.png");
+            }
+            else if (horizontalDirection == FACING_LEFT && Greenfoot.isKeyDown("left") == false)
+            {
+                setImage("GodzillaMOM_Left_0.png");
+            }
+
+            // Get a reference to any object that's created from a subclass of Platform,
+            // that is below (or just below in front, or just below behind) the hero
+            Actor upperInFront = getOneObjectAtOffset(getImage().getWidth() / 2, 0, MetalPlate.class);
+            Actor directlyInFront = getOneObjectAtOffset(getImage().getWidth() / 2, getImage().getWidth() / 3, MetalPlate.class);
+            Actor lowerInFront = getOneObjectAtOffset(getImage().getWidth() / 2, 0-getImage().getWidth() / 3, MetalPlate.class);
+
+            // Bump the hero back up so that they are not "submerged" in a platform object
+            if (upperInFront != null)
+            {
+                int correctedXPosition = lowerInFront.getY() - upperInFront.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
+                setLocation(correctedXPosition, getY());
+            }
+            if (directlyInFront != null)
+            {
+                int correctedXPosition = lowerInFront.getY() - directlyInFront.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
+                setLocation(correctedXPosition, getY());
+            }
+            if (lowerInFront != null)
+            {
+                int correctedXPosition = lowerInFront.getY() - lowerInFront.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
+                setLocation(correctedXPosition, getY());
+            }
+        }
+        else
+        {
+            fall();
+        }
+    }
+
+    /**
+     * Is the hero to the left of a platform? (any subclass of Platform)
+     */
+    public boolean toLeftOfPlatform()
+    {
+        // Get an reference to a solid object (subclass of Platform) in fornt of the hero, if one exists
+        Actor upperInFront = getOneObjectAtOffset(0, getImage().getHeight() / 3, MetalPlate.class);
+        Actor directlyInFront = getOneObjectAtOffset(0, getImage().getHeight() / 2, MetalPlate.class);
+        Actor lowerInFront = getOneObjectAtOffset(0, 0-getImage().getWidth() / 3, MetalPlate.class);
+
+        // If there is no solid object in front of the hero...
+        if (upperInFront == null && directlyInFront == null && lowerInFront == null)
         {
             return false;   // Not on a solid object
         }
