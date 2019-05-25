@@ -39,6 +39,7 @@ public class SideScrollingWorld extends World
     // Track whether game is on
     private boolean isGameOver;
 
+
     /**
      * Constructor for objects of class SideScrollingWorld.
      */
@@ -126,7 +127,7 @@ public class SideScrollingWorld extends World
     {
         int x = 11 * TILE_SIZE + HALF_TILE_SIZE;
         int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
-        MetalPlate Weapon = new MetalPlate(x, y);
+        Fence Weapon = new Fence(x, y);
         addObject(Weapon, x, y);
     }
 
@@ -143,8 +144,8 @@ public class SideScrollingWorld extends World
             int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
         for (int i = 0; i <= 2; i += 1)
         {
@@ -153,8 +154,8 @@ public class SideScrollingWorld extends World
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
         for (int i = 0; i <= 3; i += 1)
         {
@@ -163,8 +164,8 @@ public class SideScrollingWorld extends World
             int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
 
         // second
@@ -175,8 +176,8 @@ public class SideScrollingWorld extends World
             int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
         for (int i = 0; i <= 1; i += 1)
         {
@@ -185,8 +186,8 @@ public class SideScrollingWorld extends World
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
 
         // third
@@ -197,8 +198,8 @@ public class SideScrollingWorld extends World
             int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
         for (int i = 0; i <= 2; i += 1)
         {
@@ -207,8 +208,8 @@ public class SideScrollingWorld extends World
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
         for (int i = 0; i <= 1; i += 1)
         {
@@ -217,8 +218,8 @@ public class SideScrollingWorld extends World
             int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
 
         // fourth
@@ -229,8 +230,8 @@ public class SideScrollingWorld extends World
             int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
         for (int i = 0; i <= 2; i += 1)
         {
@@ -239,8 +240,8 @@ public class SideScrollingWorld extends World
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
         for (int i = 0; i <= 3; i += 1)
         {
@@ -249,8 +250,8 @@ public class SideScrollingWorld extends World
             int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
 
         // fifth
@@ -261,8 +262,8 @@ public class SideScrollingWorld extends World
             int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
         for (int i = 0; i <= 2; i += 1)
         {
@@ -271,8 +272,8 @@ public class SideScrollingWorld extends World
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
         for (int i = 0; i <= 1; i += 1)
         {
@@ -281,8 +282,8 @@ public class SideScrollingWorld extends World
             int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
 
         // sixth
@@ -293,8 +294,8 @@ public class SideScrollingWorld extends World
             int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
         for (int i = 0; i <= 1; i += 1)
         {
@@ -303,11 +304,10 @@ public class SideScrollingWorld extends World
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
 
             // create and add to world
-            Fence someFence = new Fence(x, y);
-            addObject(someFence, x, y);
+            MetalPlate Hill = new MetalPlate(x, y);
+            addObject(Hill, x, y);
         }
     }
-
 
     /**
      * Add the hero to the world.

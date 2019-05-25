@@ -49,6 +49,9 @@ public class Hero extends Actor
     private static final int COUNT_OF_WALKING_IMAGES = 2;
     private int walkingFrames;
 
+    private int gunReloadTime;              
+    private int reloadDelayCount;  
+
     /**
      * Constructor
      * 
@@ -69,7 +72,7 @@ public class Hero extends Actor
         horizontalDirection = FACING_RIGHT;
 
         // Set image
-        setImage("GodzillaMOM_Left_0.png");
+        setImage("GodzillaMOM_Right_0.png");
 
         // Initialize the 'walking' arrays
         walkingRightImages = new GreenfootImage[COUNT_OF_WALKING_IMAGES];
@@ -87,6 +90,9 @@ public class Hero extends Actor
 
         // Track animation frames for walking
         walkingFrames = 0;
+
+        gunReloadTime = 8;
+        reloadDelayCount = 0;
     }
 
     /**
@@ -101,6 +107,7 @@ public class Hero extends Actor
         {
             checkGameOver();
         }
+        reloadDelayCount++;
     }
 
     /**
@@ -132,7 +139,22 @@ public class Hero extends Actor
                 jump();
             }
         }
+
+        // firing
+        if (Greenfoot.isKeyDown("f") && !isGameOver)
+        {
+            fire();
+        }
     }
+
+    private void fire()
+    {
+        if ((reloadDelayCount >= gunReloadTime) && horizontalDirection == FACING_RIGHT)
+        {
+            getWorld().addObject(new Defend(), getX(), getY());
+            reloadDelayCount = 0;               
+        }
+    }        
 
     /**
      * Should the hero be falling right now?
@@ -212,15 +234,6 @@ public class Hero extends Actor
         // Track vertical direction
         verticalDirection = JUMPING_UP;
 
-        // Set image
-        if (horizontalDirection == FACING_RIGHT)
-        {
-            setImage("GodzillaMOM_Right_0.png");
-        }
-        else
-        {
-            setImage("GodzillaMOM_Left_0.png");
-        }
 
         // Change the vertical speed to the power of the jump
         deltaY = jumpStrength;
@@ -301,18 +314,6 @@ public class Hero extends Actor
         if (onPlatform())
         {
             animateWalk(horizontalDirection);
-        }
-        else
-        {
-            // Set appropriate jumping image
-            if (verticalDirection == JUMPING_UP)
-            {
-                setImage("GodzillaMOM_Right_0.png");
-            }
-            else
-            {
-                setImage("GodzillaMOM_Left_0.png");
-            }
         }
 
         // Get object reference to world
@@ -413,18 +414,6 @@ public class Hero extends Actor
         if (onPlatform())
         {
             animateWalk(horizontalDirection);
-        }
-        else
-        {
-            // Set appropriate jumping image
-            if (verticalDirection == JUMPING_UP)
-            {
-                setImage("hero-jump-up-left.png");
-            }
-            else
-            {
-                setImage("hero-jump-down-left.png");
-            }
         }
 
         // Get object reference to world
