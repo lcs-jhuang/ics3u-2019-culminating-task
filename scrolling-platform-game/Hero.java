@@ -168,16 +168,7 @@ public class Hero extends Actor
             // Stop falling
             deltaY = 0;
 
-            // Set image
-            if (horizontalDirection == FACING_RIGHT && Greenfoot.isKeyDown("right") == false)
-            {
-                setImage("GodzillaMOM_Right_0.png");
-            }
-            else if (horizontalDirection == FACING_LEFT && Greenfoot.isKeyDown("left") == false)
-            {
-                setImage("GodzillaMOM_Left_0.png");
-            }
-
+            
             // Get a reference to any object that's created from a subclass of Platform,
             // that is below (or just below in front, or just below behind) the hero
             Actor directlyUnder = getOneObjectAtOffset(0, getImage().getHeight() / 2, Platform.class);
@@ -235,36 +226,28 @@ public class Hero extends Actor
             // Stop moving
             deltaX = 0;
 
-            // Set image
-            if (horizontalDirection == FACING_RIGHT && Greenfoot.isKeyDown("right") == false)
-            {
-                setImage("GodzillaMOM_Right_0.png");
-            }
-            else if (horizontalDirection == FACING_LEFT && Greenfoot.isKeyDown("left") == false)
-            {
-                setImage("GodzillaMOM_Left_0.png");
-            }
+            
 
             // Get a reference to any object that's created from a subclass of Platform,
             // that is below (or just below in front, or just below behind) the hero
-            Actor upperInFront = getOneObjectAtOffset(getImage().getWidth() / 2, 0, MetalPlate.class);
-            Actor directlyInFront = getOneObjectAtOffset(getImage().getWidth() / 2, getImage().getWidth() / 3, MetalPlate.class);
-            Actor lowerInFront = getOneObjectAtOffset(getImage().getWidth() / 2, 0-getImage().getWidth() / 3, MetalPlate.class);
+            Actor upperInFront = getOneObjectAtOffset(0, getImage().getHeight() / 3, MetalPlate.class);
+            Actor directlyInFront = getOneObjectAtOffset(0, getImage().getHeight() / 2, MetalPlate.class);
+            Actor lowerInFront = getOneObjectAtOffset(0, 0-getImage().getHeight() / 3, MetalPlate.class);
 
             // Bump the hero back up so that they are not "submerged" in a platform object
             if (upperInFront != null)
             {
-                int correctedXPosition = lowerInFront.getY() - upperInFront.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
+                int correctedXPosition = upperInFront.getX() - upperInFront.getImage().getWidth() / 2 - this.getImage().getWidth() / 2;
                 setLocation(correctedXPosition, getY());
             }
             if (directlyInFront != null)
             {
-                int correctedXPosition = lowerInFront.getY() - directlyInFront.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
+                int correctedXPosition = directlyInFront.getX() - directlyInFront.getImage().getWidth() / 2 - this.getImage().getWidth() / 2;
                 setLocation(correctedXPosition, getY());
             }
             if (lowerInFront != null)
             {
-                int correctedXPosition = lowerInFront.getY() - lowerInFront.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
+                int correctedXPosition = lowerInFront.getX() - lowerInFront.getImage().getWidth() / 2 - this.getImage().getWidth() / 2;
                 setLocation(correctedXPosition, getY());
             }
         }
@@ -272,6 +255,7 @@ public class Hero extends Actor
         {
             fall();
         }
+
     }
 
     /**
@@ -282,7 +266,7 @@ public class Hero extends Actor
         // Get an reference to a solid object (subclass of Platform) in fornt of the hero, if one exists
         Actor upperInFront = getOneObjectAtOffset(0, getImage().getHeight() / 3, MetalPlate.class);
         Actor directlyInFront = getOneObjectAtOffset(0, getImage().getHeight() / 2, MetalPlate.class);
-        Actor lowerInFront = getOneObjectAtOffset(0, 0-getImage().getWidth() / 3, MetalPlate.class);
+        Actor lowerInFront = getOneObjectAtOffset(0, 0-getImage().getHeight() / 3, MetalPlate.class);
 
         // If there is no solid object in front of the hero...
         if (upperInFront == null && directlyInFront == null && lowerInFront == null)
