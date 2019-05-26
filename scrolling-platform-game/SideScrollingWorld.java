@@ -67,7 +67,7 @@ public class SideScrollingWorld extends World
         addGround();
         addHills();
         addWeapons();
-        addPlane();
+        addCloud();
         addHero();
         showScore();
     }
@@ -79,7 +79,7 @@ public class SideScrollingWorld extends World
     }
 
     // Change health Level
-    public void changeScoreBy(int thisMuch)
+    public void changeHealthLevelBy(int thisMuch)
     {
         healthLevel += thisMuch;
         showScore();
@@ -88,12 +88,12 @@ public class SideScrollingWorld extends World
     /**
      * Add plane that would attack.
      */
-    private void addPlane()
+    private void addCloud()
     {
         int x = 15 * TILE_SIZE + HALF_TILE_SIZE;
         int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
-        Cloud Plane = new Cloud(x, y);
-        addObject(Plane, x, y);
+        Cloud cloud = new Cloud(x, y);
+        addObject(cloud, x, y);
     }
 
     /**

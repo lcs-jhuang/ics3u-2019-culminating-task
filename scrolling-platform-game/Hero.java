@@ -92,6 +92,7 @@ public class Hero extends Actor
         // Track animation frames for walking
         walkingFrames = 0;
 
+        // set reload count
         gunReloadTime = 20;
         reloadDelayCount = 0;
     }
@@ -133,7 +134,7 @@ public class Hero extends Actor
         }
 
         // Jumping
-        if (Greenfoot.isKeyDown("space") && !isGameOver)
+        if (Greenfoot.isKeyDown("up") && !isGameOver)
         {
             // Only able to jump when on a solid object
             if (onPlatform())
@@ -149,6 +150,9 @@ public class Hero extends Actor
         }
     }
 
+    /**
+     * give godzilla the ability to fire
+     */
     private void fire()
     {
         if ((reloadDelayCount >= gunReloadTime) && horizontalDirection == FACING_RIGHT)
@@ -219,6 +223,9 @@ public class Hero extends Actor
         }
     }
 
+    /**
+     * Should the hero be moving forward right now? 
+     */
     public void checkBlock()
     {
         if (toLeftOfPlatform())
@@ -226,16 +233,14 @@ public class Hero extends Actor
             // Stop moving
             deltaX = 0;
 
-            // Get a reference to any object that's created from a subclass of Platform,
-            // that is below (or just below in front, or just below behind) the hero
-            Actor upperInFront = getOneObjectAtOffset(0, getImage().getHeight() / 3, MetalPlate.class);
-            Actor directlyInFront = getOneObjectAtOffset(0, getImage().getHeight() / 2, MetalPlate.class);
-            Actor lowerInFront = getOneObjectAtOffset(0, 0-getImage().getHeight() / 3, MetalPlate.class);
+            Actor upperInFront = getOneObjectAtOffset(getImage().getWidth() / 2, getImage().getHeight() / 3, MetalPlate.class);
+            Actor directlyInFront = getOneObjectAtOffset(getImage().getWidth() / 2, getImage().getHeight() / 2, MetalPlate.class);
+            Actor lowerInFront = getOneObjectAtOffset(getImage().getWidth() / 2, 0-getImage().getHeight() / 3, MetalPlate.class);
 
             // Bump the hero back up so that they are not "submerged" in a platform object
             if (upperInFront != null)
             {
-                int correctedXPosition = upperInFront.getX() - upperInFront.getImage().getWidth() / 2 - this.getImage().getWidth() / 2;
+                int correctedXPosition = upperInFront.getX() - upperInFront.getImage().getWidth() / 2 - this.getImage().getWidth() / 2 ;
                 setLocation(correctedXPosition, getY());
             }
             if (directlyInFront != null)
@@ -251,7 +256,7 @@ public class Hero extends Actor
         }
         else
         {
-            animateWalk(horizontalDirection);
+            checkKeys();        
         }
 
     }
@@ -262,14 +267,14 @@ public class Hero extends Actor
     public boolean toLeftOfPlatform()
     {
         // Get an reference to a solid object (subclass of Platform) in fornt of the hero, if one exists
-        Actor upperInFront = getOneObjectAtOffset(0, getImage().getHeight() / 3, MetalPlate.class);
-        Actor directlyInFront = getOneObjectAtOffset(0, getImage().getHeight() / 2, MetalPlate.class);
-        Actor lowerInFront = getOneObjectAtOffset(0, 0-getImage().getHeight() / 3, MetalPlate.class);
+        Actor upperInFront = getOneObjectAtOffset(getImage().getWidth() / 2, getImage().getHeight() / 3, MetalPlate.class);
+        Actor directlyInFront = getOneObjectAtOffset(getImage().getWidth() / 2, getImage().getHeight() / 2, MetalPlate.class);
+        Actor lowerInFront = getOneObjectAtOffset(getImage().getWidth() / 2, 0 - getImage().getHeight() / 3, MetalPlate.class);
 
         // If there is no solid object in front of the hero...
         if (upperInFront == null && directlyInFront == null && lowerInFront == null)
         {
-            return false;   // Not on a solid object
+            return false;   
         }
         else
         {
@@ -302,15 +307,6 @@ public class Hero extends Actor
         {
             verticalDirection = JUMPING_DOWN;
 
-            // Set image
-            if (horizontalDirection == FACING_RIGHT)
-            {
-                setImage("GodzillaMOM_Right_0.png");
-            }
-            else
-            {
-                setImage("GodzillaMOM_Left_0.png");
-            }
         }
 
         // Fall (move vertically)
@@ -564,6 +560,10 @@ public class Hero extends Actor
 
             // Tell the user game is over
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
+        }
+        if (world.healthLevel <= 0)
+        {
+            isGameOver = true;
         }
     }
 }
