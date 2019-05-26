@@ -52,10 +52,10 @@ public class EnemyFire extends Actor
     {
         if (isTouching(Hero.class)) 
         {                       
-            World world = (SideScrollingWorld) getWorld();         
-            world.removeObject(this); 
-            //world.changeHealthLevelBy(-1);
+            SideScrollingWorld world = (SideScrollingWorld) getWorld();         
+            world.removeObject(this);     
+            world.changeHealthLevelBy(-1);
         }
     }
-
+    
 }

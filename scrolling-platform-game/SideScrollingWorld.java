@@ -73,7 +73,7 @@ public class SideScrollingWorld extends World
     }
 
     // show health level
-    public void showScore()
+    private void showScore()
     {
         showText("Health Level: " + healthLevel, VISIBLE_WIDTH / 5, VISIBLE_HEIGHT / 6);
     }
@@ -86,7 +86,7 @@ public class SideScrollingWorld extends World
     }
 
     /**
-     * Add plane that would attack.
+     * Add cloud
      */
     private void addCloud()
     {

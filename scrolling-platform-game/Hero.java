@@ -113,6 +113,8 @@ public class Hero extends Actor
         reloadDelayCount++;
     }
 
+    
+    
     /**
      * Respond to keyboard action from the user.
      */
@@ -561,9 +563,12 @@ public class Hero extends Actor
             // Tell the user game is over
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
+        
         if (world.healthLevel <= 0)
         {
             isGameOver = true;
+            world.setGameOver();
+            world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
     }
 }
