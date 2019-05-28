@@ -117,7 +117,6 @@ public class Hero extends Actor
         reloadDelayCount++;
     }
 
-    
     /**
      * Respond to keyboard action from the user.
      */
@@ -233,7 +232,7 @@ public class Hero extends Actor
      */
     public void checkBlock()
     {
-        
+
         if (toLeftOfPlatform() && horizontalDirection == FACING_RIGHT)
         {
             // Stop moving
@@ -406,6 +405,7 @@ public class Hero extends Actor
 
                 // Tell the user game is over
                 world.showText("LEVEL COMPLETE", world.getWidth() / 2, world.getHeight() / 2);
+                Greenfoot.playSound("you_win.wav");
             }
 
         }
@@ -574,6 +574,7 @@ public class Hero extends Actor
         if (world.healthLevel <= 0)
         {
             isGameOver = true;
+            Greenfoot.playSound("game_over.wav");
             world.setGameOver();
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
