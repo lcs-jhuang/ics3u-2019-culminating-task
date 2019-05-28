@@ -47,9 +47,9 @@ public class EnemyFire extends Actor
     // Set the speed of the bullet 
     private int speed = 2;
 
-    // Remove asteroid if touched and add points 
     private void checkCollision()
     {
+        // change health level if Godzilla was attacked
         if (isTouching(Hero.class)) 
         {                       
             SideScrollingWorld world = (SideScrollingWorld) getWorld();         
@@ -57,6 +57,8 @@ public class EnemyFire extends Actor
             world.changeHealthLevelBy(-1);
             hasBeenRemoved = true;            
         }
+
+        // prevent the bullet from going through plates
         else if (isTouching(MetalPlate.class))
         {
             SideScrollingWorld world = (SideScrollingWorld) getWorld(); 

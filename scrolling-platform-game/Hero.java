@@ -53,7 +53,7 @@ public class Hero extends Actor
     private static final int COUNT_OF_WALKING_IMAGES = 2;
     private int walkingFrames;
 
-    // for firing
+    // For firing
     private int gunReloadTime;              
     private int reloadDelayCount;  
 
@@ -96,7 +96,7 @@ public class Hero extends Actor
         // Track animation frames for walking
         walkingFrames = 0;
 
-        // set reload count
+        // Set reload count for firing
         gunReloadTime = 20;
         reloadDelayCount = 0;
     }
@@ -147,7 +147,7 @@ public class Hero extends Actor
             }
         }
 
-        // firing
+        // Firing
         if (Greenfoot.isKeyDown("f") && !isGameOver)
         {
             fire();
@@ -233,10 +233,9 @@ public class Hero extends Actor
      */
     public void checkBlock()
     {
-
         if (toLeftOfPlatform() && horizontalDirection == FACING_RIGHT)
         {
-            // Stop moving
+            // Stop moving right
             deltaX = 0;
 
             Actor upperInFront = getOneObjectAtOffset(getImage().getWidth() / 2, getImage().getHeight() / 3, MetalPlate.class);
@@ -272,12 +271,12 @@ public class Hero extends Actor
      */
     public boolean toLeftOfPlatform()
     {
-        // Get an reference to a solid object (subclass of Platform) in fornt of the hero, if one exists
+        // Get an reference to a solid object in fornt of the hero, if one exists
         Actor upperInFront = getOneObjectAtOffset(getImage().getWidth() / 2, getImage().getHeight() / 3, MetalPlate.class);
         Actor directlyInFront = getOneObjectAtOffset(getImage().getWidth() / 2, getImage().getHeight() / 2, MetalPlate.class);
         Actor lowerInFront = getOneObjectAtOffset(getImage().getWidth() / 2, 0 - getImage().getHeight() / 3, MetalPlate.class);
 
-        // If there is no solid object in front of the hero...
+        // If there is no solid object in front of the hero
         if (upperInFront == null && directlyInFront == null && lowerInFront == null)
         {
             return false;   
@@ -572,6 +571,7 @@ public class Hero extends Actor
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
 
+        // End the game if Godzilla is no longer alive
         if (world.healthLevel <= 0)
         {
             isGameOver = true;

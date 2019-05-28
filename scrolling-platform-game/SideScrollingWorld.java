@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Template for a side-scrolling platform game.
  * 
- * @author R. Gordon
+ * @author Joe
  * @version May 8, 2019
  */
 public class SideScrollingWorld extends World
@@ -176,8 +176,7 @@ public class SideScrollingWorld extends World
      */
     private void addHills()
     {
-
-        // second
+        // first
         for (int i = 0; i <= 2; i += 1)
         {
             //location
@@ -199,7 +198,7 @@ public class SideScrollingWorld extends World
             addObject(Hill, x, y);
         }
 
-        // third
+        // second
         for (int i = 0; i <= 2; i += 1)
         {
             //location
@@ -231,7 +230,7 @@ public class SideScrollingWorld extends World
             addObject(Hill, x, y);
         }
 
-        // fourth
+        // third
         for (int i = 0; i <= 4; i += 1)
         {
             //location
@@ -263,7 +262,7 @@ public class SideScrollingWorld extends World
             addObject(Hill, x, y);
         }
 
-        // fifth
+        // fourth
         for (int i = 0; i <= 2; i += 1)
         {
             //location
@@ -295,7 +294,7 @@ public class SideScrollingWorld extends World
             addObject(Hill, x, y);
         }
 
-        // sixth
+        // fifth
         for (int i = 0; i <= 3; i += 1)
         {
             //location

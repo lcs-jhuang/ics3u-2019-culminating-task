@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class Defend here.
  * 
  * @author Joe 
- * @version (a version number or a date)
+ * @version May 8, 2019
  */
 public class Defend extends Actor
 {
@@ -47,7 +47,6 @@ public class Defend extends Actor
     // Set the speed of the bullet 
     private int speed = 8;
 
-    // Remove asteroid if touched and add points 
     public void checkCollision()
     {
         if (hasBeenRemoved == false)
@@ -60,6 +59,8 @@ public class Defend extends Actor
                 hasBeenRemoved = true;
             }
         }
+
+        // Remove enemy if touched
         if (hasBeenRemoved == false)
         { 
             if (isTouching(Weapon.class)) 
