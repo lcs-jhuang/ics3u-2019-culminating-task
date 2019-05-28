@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class EnemyFire extends Actor
 {
     private boolean hasBeenRemoved;
-    
+
     /**
      * Constructor
      * 
@@ -45,7 +45,7 @@ public class EnemyFire extends Actor
     }
 
     // Set the speed of the bullet 
-    private int speed = 10;
+    private int speed = 2;
 
     // Remove asteroid if touched and add points 
     private void checkCollision()
@@ -55,7 +55,13 @@ public class EnemyFire extends Actor
             SideScrollingWorld world = (SideScrollingWorld) getWorld();         
             world.removeObject(this);     
             world.changeHealthLevelBy(-1);
+            hasBeenRemoved = true;            
+        }
+        else if (isTouching(MetalPlate.class))
+        {
+            SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
+            world.removeObject(this);  
+            hasBeenRemoved = true;       
         }
     }
-    
 }

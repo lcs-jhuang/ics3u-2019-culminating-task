@@ -30,7 +30,7 @@ public class Weapon extends Other
 
     private void enemyFire()
     {
-        if (Greenfoot.getRandomNumber(80) < 1)
+        if (Greenfoot.getRandomNumber(200) < 1)
         {
             getWorld().addObject(new EnemyFire(), getX(), getY());                  
         }

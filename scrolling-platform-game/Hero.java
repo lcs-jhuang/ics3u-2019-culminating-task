@@ -233,11 +233,9 @@ public class Hero extends Actor
      */
     public void checkBlock()
     {
-        System.out.println("horizontal direction is " + horizontalDirection);
-        System.out.println("to left of platform is " + toLeftOfPlatform());
+        
         if (toLeftOfPlatform() && horizontalDirection == FACING_RIGHT)
         {
-            System.out.println("about to stop moving");
             // Stop moving
             deltaX = 0;
 
@@ -460,7 +458,6 @@ public class Hero extends Actor
      */
     public void moveLeft()
     {
-        System.out.println("about to move left, deltaX is" + deltaX);
         // Give the character a forward speed again
         deltaX = WALKING_SPEED;
 
