@@ -27,7 +27,6 @@ public class Defend extends Actor
     public void act() 
     {       
         setLocation(getX()  + speed, getY());
-        Greenfoot.playSound("godzillaFire.wav");
         checkBoundaries();
         if (hasBeenRemoved == false)
         {

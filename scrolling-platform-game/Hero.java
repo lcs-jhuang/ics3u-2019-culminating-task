@@ -162,6 +162,7 @@ public class Hero extends Actor
         if ((reloadDelayCount >= gunReloadTime) && horizontalDirection == FACING_RIGHT)
         {
             getWorld().addObject(new Defend(), getX(), getY());
+            Greenfoot.playSound("godzillaFire.wav");
             reloadDelayCount = 0;    
             setImage("GodzillaMOM_fire_0.png");            
         }
