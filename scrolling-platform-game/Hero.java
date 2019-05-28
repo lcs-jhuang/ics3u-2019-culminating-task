@@ -14,8 +14,12 @@ public class Hero extends Actor
      * 
      * These are available for use in any method below.
      */    
+
+    // Walking speed
+    private static final int WALKING_SPEED = 4;
+
     // Horizontal speed (change in horizontal position, or delta X)
-    private int deltaX = 4;
+    private int deltaX = WALKING_SPEED;
 
     // Vertical speed (change in vertical position, or delta Y)
     private int deltaY = 4;
@@ -113,7 +117,6 @@ public class Hero extends Actor
         reloadDelayCount++;
     }
 
-    
     
     /**
      * Respond to keyboard action from the user.
@@ -226,12 +229,15 @@ public class Hero extends Actor
     }
 
     /**
-     * Should the hero be moving forward right now? 
+     * Should the hero be moving right now? 
      */
     public void checkBlock()
     {
-        if (toLeftOfPlatform())
+        System.out.println("horizontal direction is " + horizontalDirection);
+        System.out.println("to left of platform is " + toLeftOfPlatform());
+        if (toLeftOfPlatform() && horizontalDirection == FACING_RIGHT)
         {
+            System.out.println("about to stop moving");
             // Stop moving
             deltaX = 0;
 
@@ -454,6 +460,10 @@ public class Hero extends Actor
      */
     public void moveLeft()
     {
+        System.out.println("about to move left, deltaX is" + deltaX);
+        // Give the character a forward speed again
+        deltaX = WALKING_SPEED;
+
         // Track direction
         horizontalDirection = FACING_LEFT;
 
@@ -563,7 +573,7 @@ public class Hero extends Actor
             // Tell the user game is over
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
-        
+
         if (world.healthLevel <= 0)
         {
             isGameOver = true;
