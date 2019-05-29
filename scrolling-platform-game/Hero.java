@@ -578,6 +578,7 @@ public class Hero extends Actor
             Greenfoot.playSound("game_over.wav");
             world.setGameOver();
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
+            Greenfoot.stop();
         }
     }
 }

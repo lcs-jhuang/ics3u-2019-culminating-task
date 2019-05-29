@@ -66,9 +66,10 @@ public class Defend extends Actor
             if (isTouching(Weapon.class)) 
             {
                 removeTouching(Weapon.class);             
-                World world = (SideScrollingWorld) getWorld();         
+                SideScrollingWorld world = (SideScrollingWorld) getWorld();         
                 world.removeObject(this);
                 hasBeenRemoved = true;
+                world.changeHealthLevelBy(+1);
             }
         }
     }
